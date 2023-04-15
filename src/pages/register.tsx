@@ -1,11 +1,13 @@
 import { Button, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { useRouter } from 'next/router';
 import { FormEventHandler, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useAccount } from 'wagmi';
 const Register = () => {
 	const [loading, setLoading] = useState(false);
 	const { address, isConnecting, isDisconnected } = useAccount();
+	const router = useRouter();
 
 	const form = useForm({
 		initialValues: {
@@ -33,6 +35,7 @@ const Register = () => {
 
 		if (data.message) {
 			toast.success(data.message);
+			router.push('/new_stream');
 		}
 
 		setLoading(false);

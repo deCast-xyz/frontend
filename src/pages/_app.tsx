@@ -12,6 +12,14 @@ import { polygonMumbai } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
+import { LivepeerConfig, createReactClient, studioProvider } from '@livepeer/react';
+
+const livepeerClient = createReactClient({
+	provider: studioProvider({
+		apiKey: process.env.NEXT_PUBLIC_STUDIO_API_KEY!,
+	}),
+});
+
 const { chains, provider } = configureChains(
 	[polygonMumbai],
 	[alchemyProvider({ apiKey: process.env.ALCHEMY_ID! }), publicProvider()]
@@ -37,9 +45,11 @@ export default function App({ Component, pageProps }: AppProps) {
 			<div className="bg-gray-50">
 				<WagmiConfig client={wagmiClient}>
 					<RainbowKitProvider chains={chains} modalSize="compact">
-						<Layout>
-							<Component {...pageProps} />
-						</Layout>
+						<LivepeerConfig client={livepeerClient}>
+							<Layout>
+								<Component {...pageProps} />
+							</Layout>
+						</LivepeerConfig>
 					</RainbowKitProvider>
 				</WagmiConfig>
 
