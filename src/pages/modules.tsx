@@ -88,6 +88,7 @@ const Modules = () => {
 
 	const goLive = async () => {
 		const streamKey = stream?.streamKey;
+		const playbackId = stream?.playbackId;
 
 		const response = await fetch('/api/account/live_stream', {
 			method: 'POST',
@@ -97,6 +98,7 @@ const Modules = () => {
 			body: JSON.stringify({
 				stream_id: streamKey,
 				wallet_address: address,
+				playback_id: playbackId,
 			}),
 		});
 
