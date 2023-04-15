@@ -1,4 +1,4 @@
-import { Button, TextInput } from '@mantine/core';
+import { Button, NumberInput, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useRouter } from 'next/router';
 import { FormEventHandler, useState } from 'react';
@@ -11,9 +11,11 @@ const Register = () => {
 
 	const form = useForm({
 		initialValues: {
-			name: '',
-			symbol: '',
-			description: '',
+			creator_name: '',
+			username: '',
+			membership_name: '',
+			membership_description: '',
+			monthly_price: '',
 		},
 	});
 
@@ -43,31 +45,54 @@ const Register = () => {
 	};
 
 	return (
-		<div className="min-h-screen">
-			<h5 className="text-xl font-medium my-5">Mint your creator NFT</h5>
+		<div className="min-h-screen bg-white p-5 rounded-lg">
+			<h5 className="text-xl  my-5 text-gray-900 font-medium">Become a creator</h5>
 			<div className="grid md:grid-cols-2 gap-5 items-center">
-				<div className="grid place-items-center">
-					<div
-						className="bg-gray-100 rounded-lg w-9 h-90"
-						style={{
-							background: 'rgb(232, 232, 232)',
-							width: '250px',
-							height: '250px',
-						}}
-					></div>
-				</div>
 				<div>
-					<div className="md:w-1/2">
+					<div className="md:w-3/4 ">
 						<form className="space-y-5" onSubmit={handleFormSubmit}>
-							<TextInput required label="Name" placeholder="" {...form.getInputProps('name')} />
 							<TextInput
 								required
-								label="Description"
+								label="Creator Name"
 								placeholder=""
-								{...form.getInputProps('description')}
+								{...form.getInputProps('creator_name')}
+							/>
+							<TextInput
+								required
+								label="Username (it will be your URL. ex: https://username.decast.xyz/)"
+								placeholder=""
+								{...form.getInputProps('username')}
 							/>
 
-							<Button type="submit" color="white" loading={loading}>
+							<Button color="dark" type="submit" loading={loading}>
+								Submit
+							</Button>
+						</form>
+					</div>
+					<div className="md:w-3/4 ">
+						<h5 className="text-xl  my-5 text-gray-900 font-medium">Membership NFT detail</h5>
+
+						<form className="space-y-5" onSubmit={handleFormSubmit}>
+							<TextInput
+								required
+								label="Membership Name"
+								placeholder=""
+								{...form.getInputProps('membership_name')}
+							/>
+							<TextInput
+								required
+								label="Membership Description"
+								placeholder=""
+								{...form.getInputProps('membership_description')}
+							/>
+							<NumberInput
+								required
+								label="Monthly Price"
+								placeholder=""
+								{...form.getInputProps('monthly_price')}
+							/>
+
+							<Button type="submit" color="dark" loading={loading}>
 								Submit
 							</Button>
 						</form>

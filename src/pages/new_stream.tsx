@@ -75,8 +75,8 @@ const NewStream = () => {
 	};
 
 	return (
-		<div className="space-y-5 md:w-1/2 ">
-			<h4 className="text-xl font-medium">{isLive ? 'LIVE' : 'New'} Stream</h4>
+		<div className="space-y-5 md:w-1/2 bg-gray-50 rounded-lg p-5">
+			<h4 className="text-xl text-gray-900 font-medium">{isLive ? 'LIVE' : 'New'} Stream</h4>
 
 			{!isLive ? (
 				<TextInput type="text" label="Stream name" onChange={(e) => setStreamName(e.target.value)} />

@@ -21,7 +21,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 				const balance = await nftContract.balanceOf(address);
 
 				if (balance.toString() == 0) {
-					router.push('/register');
+					router.push('/viewers');
 				} else {
 					router.push('/modules');
 				}
@@ -55,7 +55,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 			</main>
 
 			<footer>
-				<p className="text-center text-gray-500 bg-[#010314] py-5">Copyright Decast</p>
+				<p className="text-center text-sm text-gray-500 bg-[#010314] py-5">Copyright Decast</p>
 			</footer>
 		</section>
 	);

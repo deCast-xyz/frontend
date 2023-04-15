@@ -17,10 +17,13 @@ const ModulesAction = ({
 }) => {
 	return (
 		<div
-			className={`cursor-pointer border rounded-lg p-5 bg-white hover:border-gray-900 ${
-				active.includes(id) ? 'border-gray-900' : ''
+			className={`cursor-pointer border-gray-400 rounded-lg p-5 border  ${
+				active.includes(id) ? 'border-blue-400' : ''
 			}
 			`}
+			style={{
+				borderColor: active.includes(id) ? '#2a2b3a' : 'rgb(59 130 246)',
+			}}
 			onClick={() => {
 				if (active.includes(id)) {
 					setActive(active.filter((item) => item !== id));
@@ -40,7 +43,6 @@ const Modules = () => {
 	const router = useRouter();
 	const [active, setActive] = useState<string[]>([]);
 
-	console.log(active);
 	return (
 		<>
 			<h1>Choose Modules & start streaming</h1>
