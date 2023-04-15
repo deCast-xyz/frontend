@@ -16,11 +16,11 @@ As the first step, we build modules for token-gate/stream-gate live streaming by
 
 While live streaming becomes increasingly important for creators to connect with their audience and around 36B hours of live streaming are watched in 2021, they face several challenges that hinder their growth and creative freedom.
 
-2-1. Censorship and dependency on centralized platforms, limiting control and expression
+1. Censorship and dependency on centralized platforms, limiting control and expression
 
-2-2. Losing a significant portion (30-50%) of their membership revenue to platforms like YouTube and Twitch
+2. Losing a significant portion (30-50%) of their membership revenue to platforms like YouTube and Twitch
 
-2-3. Creators or Developers cannot customize or add features based on their demand.
+3. Creators or Developers cannot customize or add features based on their demand.
 
 ## Solution
 
