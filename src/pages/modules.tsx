@@ -95,7 +95,7 @@ const Modules = () => {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				stream_id: stream?.playbackId,
+				stream_id: streamKey,
 				wallet_address: address,
 			}),
 		});
