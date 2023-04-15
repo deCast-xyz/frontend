@@ -32,10 +32,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 	}, [address]);
 
 	return (
-		<>
-			<header className="flex justify-between p-5">
+		<section className="bg-[#010314]">
+			<header className="flex justify-between items-center p-5 bg-[#010314]">
 				<Link href="/" passHref>
-					deCast
+					<img src="/logo.svg" alt="" className="w-32" />
 				</Link>
 
 				<div className="flex items-center space-x-8">
@@ -50,14 +50,14 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 					</>
 				</div>
 			</header>
-			<main className="mx-auto container px-1 sm:px-6 md:px-10 relative xl:py-20 2xl:py-28 min-h-screen">
+			<main className="mx-auto container px-1 sm:px-6 md:px-10 relative xl:py-20 2xl:py-28 min-h-screen bg-[#010314] text-white">
 				{children}
 			</main>
 
 			<footer>
-				<p className="text-center text-gray-500">Footer</p>
+				<p className="text-center text-gray-500 bg-[#010314] py-5">Copyright Decast</p>
 			</footer>
-		</>
+		</section>
 	);
 };
 
