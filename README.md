@@ -56,3 +56,8 @@ Developers can add modules on our platform
 
 1. Build the module template for developers to build and add their own modules
 2. Add more modules like 1 on 1 video streaming, Tipping etc…
+
+## Polygon💜
+We deployed ERC-1155 contract on Polygon Mumbai. So we can distribute it to creators NFT while they register as creators.
+https://mumbai.polygonscan.com/address/0x3217A2D822a4808f4E7EC31434903F3613eba097
+https://twitter.com/yukiw_eth/status/1647298657891520512](https://twitter.com/yukiw_eth/status/1647298657891520512
