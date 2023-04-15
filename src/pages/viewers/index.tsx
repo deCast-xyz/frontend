@@ -1,247 +1,85 @@
-import React from 'react';
-import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
-
-
 // button component - brand new
 // cwatchMint - new component
 // onMount - readContract state - activeStream
 // ternanryOperator
-// button - ternanry- 
+// button - ternanry-
 // ternanry for function as well
 
+import { Button } from '@mantine/core';
+
 // wag
- 
+
+const ViewerCard = ({ hideSubscribe = false }: { hideSubscribe?: boolean }) => {
+	return (
+		<div className="flex flex-wrap -mx-1 ">
+			<div className="border-gray-900">
+				<article className="overflow-hidden rounded-lg shadow-lg">
+					<a href="#">
+						<img
+							alt="Placeholder"
+							className="block h-auto w-full"
+							src="https://picsum.photos/600/400/?random"
+						/>
+					</a>
+					<div className="bg-gray-900  p-2 md:p-4">
+						<footer className="flex  items-center justify-between leading-none mb-5">
+							<a className="flex items-center no-underline hover:underline " href="#">
+								<img
+									alt="Placeholder"
+									className="block rounded-full"
+									src="https://picsum.photos/32/32/?random"
+								/>
+								<div className="text-lg ml-5">
+									<a className="no-underline hover:underline " href="#">
+										Sakura Event Apr 15
+									</a>
+									<p className="text-sm">by Andrew</p>
+								</div>
+							</a>
+						</footer>
+
+						{!hideSubscribe ? (
+							<Button color="red" radius={'lg'} fullWidth className="mt-2">
+								Subscribe
+							</Button>
+						) : (
+							<Button color="blue" radius={'lg'} fullWidth>
+								Watch
+							</Button>
+						)}
+					</div>
+				</article>
+			</div>
+		</div>
+	);
+};
 
 const index = () => {
+	return (
+		<>
+			<div className="container my-12 mx-auto px-4 md:px-12 space-y-6">
+				<section>
+					<div className="text-2xl mb-5">List of available streams: </div>
 
-  
-  return (
-    <>
-    <div className="container my-12 mx-auto px-4 md:px-12">
-      <div className="text-4xl">List of available streams: </div>
+					<div className="grid md:grid-cols-3 gap-5 ">
+						<ViewerCard hideSubscribe />
+						<ViewerCard hideSubscribe />
+						<ViewerCard hideSubscribe />
+					</div>
+				</section>
 
-      <div className="flex flex-wrap -mx-1 lg:-mx-4">
-        <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+				<section>
+					<div className="text-2xl mb-5">Live Stream by Creators you may want to subscribe </div>
 
-            <article className="overflow-hidden rounded-lg shadow-lg">
+					<div className="grid md:grid-cols-3 gap-5 ">
+						<ViewerCard />
+						<ViewerCard />
+						<ViewerCard />
+					</div>
+				</section>
+			</div>
+		</>
+	);
+};
 
-                <a href="#">
-                    <img alt="Placeholder" className="block h-auto w-full" src="https://picsum.photos/600/400/?random"/>
-                </a>
-
-                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                    <h1 className="text-lg">
-                        <a className="no-underline hover:underline text-black" href="#">
-                            Stream Title
-                        </a>
-                    </h1>
-                    <p className="text-grey-darker text-sm">
-                        11/1/19
-                    </p>
-                </header>
-
-                <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-                    <a className="flex items-center no-underline hover:underline text-black" href="#">
-                        <img alt="Placeholder" className="block rounded-full" src="https://picsum.photos/32/32/?random"/>
-                        <p className="ml-2 text-sm">
-                            Author Name
-                        </p>
-                    </a>
-                    <a className="no-underline text-grey-darker hover:text-red-dark" href="#">
-                        <span className="hidden">Like</span>
-                        <i className="fa fa-heart"></i>
-                    </a>
-                </footer>
-
-            </article>
-
-        </div>
-
-        <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-
-            <article className="overflow-hidden rounded-lg shadow-lg">
-
-                <a href="#">
-                    <img alt="Placeholder" className="block h-auto w-full" src="https://picsum.photos/600/400/?random"/>
-                </a>
-
-                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                    <h1 className="text-lg">
-                        <a className="no-underline hover:underline text-black" href="#">
-                            Stream Title
-                        </a>
-                    </h1>
-                    <p className="text-grey-darker text-sm">
-                        11/1/19
-                    </p>
-                </header>
-
-                <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-                    <a className="flex items-center no-underline hover:underline text-black" href="#">
-                        <img alt="Placeholder" className="block rounded-full" src="https://picsum.photos/32/32/?random"/>
-                        <p className="ml-2 text-sm">
-                            Author Name
-                        </p>
-                    </a>
-                    <a className="no-underline text-grey-darker hover:text-red-dark" href="#">
-                        <span className="hidden">Like</span>
-                        <i className="fa fa-heart"></i>
-                    </a>
-                </footer>
-
-            </article>
-
-        </div>
-
-        <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-
-            <article className="overflow-hidden rounded-lg shadow-lg">
-
-                <a href="#">
-                    <img alt="Placeholder" className="block h-auto w-full" src="https://picsum.photos/600/400/?random"/>
-                </a>
-
-                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                    <h1 className="text-lg">
-                        <a className="no-underline hover:underline text-black" href="#">
-                            Stream Title
-                        </a>
-                    </h1>
-                    <p className="text-grey-darker text-sm">
-                        11/1/19
-                    </p>
-                </header>
-
-                <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-                    <a className="flex items-center no-underline hover:underline text-black" href="#">
-                        <img alt="Placeholder" className="block rounded-full" src="https://picsum.photos/32/32/?random"/>
-                        <p className="ml-2 text-sm">
-                            Author Name
-                        </p>
-                    </a>
-                    <a className="no-underline text-grey-darker hover:text-red-dark" href="#">
-                        <span className="hidden">Like</span>
-                        <i className="fa fa-heart"></i>
-                    </a>
-                </footer>
-
-            </article>
-
-        </div>
-
-        <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-
-            <article className="overflow-hidden rounded-lg shadow-lg">
-
-                <a href="#">
-                    <img alt="Placeholder" className="block h-auto w-full" src="https://picsum.photos/600/400/?random"/>
-                </a>
-
-                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                    <h1 className="text-lg">
-                        <a className="no-underline hover:underline text-black" href="#">
-                            Stream Title
-                        </a>
-                    </h1>
-                    <p className="text-grey-darker text-sm">
-                        11/1/19
-                    </p>
-                </header>
-
-                <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-                    <a className="flex items-center no-underline hover:underline text-black" href="#">
-                        <img alt="Placeholder" className="block rounded-full" src="https://picsum.photos/32/32/?random"/>
-                        <p className="ml-2 text-sm">
-                            Author Name
-                        </p>
-                    </a>
-                    <a className="no-underline text-grey-darker hover:text-red-dark" href="#">
-                        <span className="hidden">Like</span>
-                        <i className="fa fa-heart"></i>
-                    </a>
-                </footer>
-
-            </article>
-
-        </div>
-
-        <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-
-            <article className="overflow-hidden rounded-lg shadow-lg">
-
-                <a href="#">
-                    <img alt="Placeholder" className="block h-auto w-full" src="https://picsum.photos/600/400/?random"/>
-                </a>
-
-                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                    <h1 className="text-lg">
-                        <a className="no-underline hover:underline text-black" href="#">
-                            Stream Title
-                        </a>
-                    </h1>
-                    <p className="text-grey-darker text-sm">
-                        11/1/19
-                    </p>
-                </header>
-
-                <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-                    <a className="flex items-center no-underline hover:underline text-black" href="#">
-                        <img alt="Placeholder" className="block rounded-full" src="https://picsum.photos/32/32/?random"/>
-                        <p className="ml-2 text-sm">
-                            Author Name
-                        </p>
-                    </a>
-                    <a className="no-underline text-grey-darker hover:text-red-dark" href="#">
-                        <span className="hidden">Like</span>
-                        <i className="fa fa-heart"></i>
-                    </a>
-                </footer>
-
-            </article>
-
-        </div>
-
-        <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-
-            <article className="overflow-hidden rounded-lg shadow-lg">
-
-                <a href="#">
-                    <img alt="Placeholder" className="block h-auto w-full" src="https://picsum.photos/600/400/?random"/>
-                </a>
-
-                <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-                    <h1 className="text-lg">
-                        <a className="no-underline hover:underline text-black" href="#">
-                            Stream Title
-                        </a>
-                    </h1>
-                    <p className="text-grey-darker text-sm">
-                        11/1/19
-                    </p>
-                </header>
-
-                <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-                    <a className="flex items-center no-underline hover:underline text-black" href="#">
-                        <img alt="Placeholder" className="block rounded-full" src="https://picsum.photos/32/32/?random"/>
-                        <p className="ml-2 text-sm">
-                            Author Name
-                        </p>
-                    </a>
-                    <a className="no-underline text-grey-darker hover:text-red-dark" href="#">
-                        <span className="hidden">Like</span>
-                        <i className="fa fa-heart"></i>
-                    </a>
-                </footer>
-
-            </article>
-
-        </div>
-
-    </div>
-</div>
-    </>
-    
-  )
-}
-
-export default index
+export default index;
