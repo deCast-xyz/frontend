@@ -59,5 +59,5 @@ Developers can add modules on our platform
 
 ## Polygon💜
 We deployed ERC-1155 contract on Polygon Mumbai. So we can distribute it when viewers subscribe creators live streaming.
-https://mumbai.polygonscan.com/address/0x3217A2D822a4808f4E7EC31434903F3613eba097
+https://mumbai.polygonscan.com/address/0x5fCB84F95E7ee10FE552B3803DF418b39FE2cA6E
 https://twitter.com/yukiw_eth/status/1647298657891520512
