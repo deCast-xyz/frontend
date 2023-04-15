@@ -45,6 +45,7 @@
     "react-hot-toast": "^2.4.0",
     "tailwindcss": "3.3.1",
     "typescript": "5.0.4",
+    "unique-names-generator": "^4.7.1",
     "wagmi": "^0.12.10"
   },
   "devDependencies": {

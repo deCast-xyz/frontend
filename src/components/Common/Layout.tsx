@@ -41,19 +41,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 				</Link>
 
 				<div className="flex items-center space-x-8">
-					{router.asPath.includes('viewer') ? (
-						<Link href="/register" passHref>
-							<Button color="gray" radius={'lg'} className="bg-white">
-								Are you creator?
-							</Button>
-						</Link>
-					) : null}
-
-					<Link href="/group_chat" passHref>
+					<Link href="/register" passHref>
 						<Button color="gray" radius={'lg'} className="bg-white">
-							group chat
+							Are you creator?
 						</Button>
 					</Link>
+
 					<div className="connect">
 						<ConnectButton />
 					</div>
