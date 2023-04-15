@@ -6,10 +6,20 @@
 // ternanry for function as well
 import { Button, Modal } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+import { createFlow } from "../../utils/superfluid.js";
+import { useAccount } from 'wagmi';
+import { ethers } from "ethers";
 // wag
 
-const Subscribe = () => {
+
+// when user clicks on subscribe button
+// it will call the createFlow function and start the flow
+// user should get redirected 
+const Subscribe =  () => {
 	const [opened, { open, close }] = useDisclosure(false);
+
+    const {address} = useAccount()
+  
 	return (
 		<>
 			<Modal opened={opened} onClose={close} title="Subscribe">
@@ -20,7 +30,19 @@ const Subscribe = () => {
 
 					<div className="bg-gray-50">This subscription is streamed to the creator using superfluid.</div>
 
-					<Button onClick={close} color="red" radius={'lg'} fullWidth className="mt-2">
+					<Button onClick={async () =>{
+                          const provider = new ethers.providers.Web3Provider((window as any).ethereum , "any");
+                          await provider.send('eth_requestAccounts', []);
+                         console.log(provider)
+                        
+                        createFlow(
+                         address, 
+                        "0x4E317b5952a307aE1B9cc3b5b12e07dC2065f733",
+                        ((30*10^18/365*24*60*60) * 12).toString(),
+                        provider,
+                        await provider.getSigner()
+                    
+                    )}} color="red" radius={'lg'} fullWidth className="mt-2">
 						Subscribe
 					</Button>
 				</div>
@@ -28,6 +50,7 @@ const Subscribe = () => {
 
 			<Button onClick={open} color="red" radius={'lg'} fullWidth className="mt-2">
 				Subscribe
+                
 			</Button>
 		</>
 	);
@@ -44,7 +67,7 @@ const ViewerCard = ({ hideSubscribe = false }: { hideSubscribe?: boolean }) => {
 							className="block h-auto w-full"
 							src="https://picsum.photos/600/400/?random"
 						/>
-					</a>
+                        					</a>
 					<div className="bg-gray-900  p-2 md:p-4">
 						<footer className="flex  items-center justify-between leading-none mb-5">
 							<a className="flex items-center no-underline hover:underline " href="#">
@@ -81,7 +104,7 @@ const index = () => {
 		<>
 			<div className="container my-12 mx-auto px-4 md:px-12 space-y-6">
 				<section>
-					<div className="text-2xl mb-5">List of available streams: </div>
+					<div className="text-2xl mb-5">Subscribed live streams </div>
 
 					<div className="grid md:grid-cols-3 gap-5 ">
 						<ViewerCard hideSubscribe />
@@ -91,7 +114,7 @@ const index = () => {
 				</section>
 
 				<section>
-					<div className="text-2xl mb-5">Live Stream by Creators you may want to subscribe </div>
+					<div className="text-2xl mb-5">You maybe interested in</div>
 
 					<div className="grid md:grid-cols-3 gap-5 ">
 						<ViewerCard />
