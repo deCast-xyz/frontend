@@ -58,7 +58,6 @@ export default async function Handler(req: NextApiRequest, res: NextApiResponse)
 
     const hash = await minting({ wallet_address, name, description, symbol, image });
 
-    console.log(hash)
 
     res.status(200).json({ message: "NFT Minted succesfully" })
 }
