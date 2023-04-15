@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function Handler(req: NextApiRequest, res: NextApiResponse) {
 
-    const { wallet_address, stream_id } = req.body;
+    const { wallet_address, stream_id, playback_id } = req.body;
 
 
     await db.creators.updateMany({
@@ -11,7 +11,8 @@ export default async function Handler(req: NextApiRequest, res: NextApiResponse)
             wallet_address: wallet_address
         },
         data: {
-            stream_id: stream_id
+            stream_id: stream_id,
+            playback_id: playback_id,
         }
     })
 
