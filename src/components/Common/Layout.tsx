@@ -21,9 +21,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 				const balance = await nftContract.balanceOf(address);
 
 				if (balance.toString() == 0) {
-					router.push('/viewers');
+					router.push('/register');
 				} else {
-					router.push('/modules');
+					router.push('/viewers');
 				}
 			}
 		};
@@ -40,12 +40,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
 				<div className="flex items-center space-x-8">
 					<>
-						{address && (
-							<Link passHref href={'/modules'}>
-								Modules
-							</Link>
-						)}
-
 						<ConnectButton />
 					</>
 				</div>
