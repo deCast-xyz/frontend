@@ -33,7 +33,7 @@ body {
       width: 200px;
       height: 499px;
       left: 0px;
-      bottom: 0px;
+      top: 550px;
       background: linear-gradient(245.7deg, #e42212 22.92%, #921005 45.94%, #921005 85.03%);
       opacity: .5;
       filter: blur(150px);
@@ -44,3 +44,8 @@ body {
   background: #fff !important;
   color: #000 !important
 }
+
+.white_button{
+  background: #fff !important;
+  color: #000 !important
+ }

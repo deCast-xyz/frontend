@@ -8,7 +8,64 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { toast } from 'react-hot-toast';
 import { useAccount } from 'wagmi';
 
-const ModulesAction = ({
+export const ModulesList = [
+	{
+		name: 'Stream-gated',
+		description: 'Grant access to a 1 on 1 video call with you  (or someone else)',
+		bg_color: '#FAFFF4',
+		icon: '/icons/superfluid.jpg',
+	},
+	{
+		name: 'NFT-gated with Sismo',
+		description: 'Only NFT holders can access the live streaming (they can prove it privately)',
+		bg_color: '#F7F4FF',
+		icon: '/icons/nft.jpg',
+	},
+	{
+		name: 'NFT-gated',
+		description: 'Only NFT holders can access the live streaming (they can prove it privately)',
+		bg_color: '#E2FBFF',
+		icon: '/icons/nft.jpg',
+	},
+	{
+		name: '1 on 1 meeting',
+		description: 'Grant access to a 1 on 1 video call with you ',
+		bg_color: '#F1FBFF',
+		icon: '/icons/1v1.jpg',
+	},
+	{
+		name: 'Tipping',
+		description: 'Add tipping module to your live streaming',
+		bg_color: '#FFFBEF',
+		icon: '/icons/tip.jpg',
+	},
+	{
+		name: 'POAP',
+		description: 'Receive POAP by joining the live streaming',
+		bg_color: '#F7F4FF',
+		icon: '/icons/poap.jpg',
+	},
+	{
+		name: 'Celo',
+		description: 'You can use carbon-negative, mobile-first, EVM-compatible blockchain',
+		bg_color: '#E2FBFF',
+		icon: '/icons/celo.png',
+	},
+	{
+		name: 'Receive POAP by joining the live streaming',
+		description: 'You can split your revenue to the your preferred public good',
+		bg_color: '#E2FBFF',
+		icon: '/icons/poap.jpg',
+	},
+	{
+		name: 'Lens followers',
+		description: 'Grant access to an exclusive channel on Discord server',
+		bg_color: '#FAFFF4',
+		icon: '/icons/lens.jpg',
+	},
+];
+
+export const ModulesAction = ({
 	title,
 	icon,
 	description,
@@ -20,8 +77,8 @@ const ModulesAction = ({
 	icon?: string;
 	bg_color: string;
 	description: string;
-	active: string[];
-	setActive: (data: string[]) => void;
+	active?: string[];
+	setActive?: (data: string[]) => void;
 }) => {
 	return (
 		<div
@@ -31,10 +88,12 @@ const ModulesAction = ({
 				backgroundColor: bg_color,
 			}}
 			onClick={() => {
-				if (active.includes(title)) {
-					setActive(active.filter((item) => item !== title));
-				} else {
-					setActive([...active, title]);
+				if (active && setActive) {
+					if (active.includes(title)) {
+						setActive(active.filter((item) => item !== title));
+					} else {
+						setActive([...active, title]);
+					}
 				}
 			}}
 		>
@@ -133,8 +192,8 @@ const Modules = () => {
 	console.log(stream);
 
 	return (
-		<section className="bg-white p-5 rounded-lg">
-			<h4 className="text-xl text-gray-900 font-medium mb-5">{isLive ? 'LIVE' : 'New'} Stream</h4>
+		<section className="bg-[#13161B] p-5 rounded-lg">
+			<h4 className="text-xl text-white font-medium mb-5">{isLive ? 'LIVE' : 'New'} Stream</h4>
 
 			{!isLive ? (
 				<div className="space-y-5">
@@ -146,44 +205,36 @@ const Modules = () => {
 			) : null}
 
 			<>
-				<>
-					{stream ? (
-						<>
-							<CopyToClipboard text={stream.rtmpIngestUrl} onCopy={() => toast.success('Server Copied!')}>
-								<TextInput readOnly value={stream.rtmpIngestUrl} label="Server" />
-							</CopyToClipboard>
+				{stream ? (
+					<section className="mb-5">
+						<CopyToClipboard text={stream.rtmpIngestUrl} onCopy={() => toast.success('Server Copied!')}>
+							<TextInput readOnly value={stream.rtmpIngestUrl} label="Server" />
+						</CopyToClipboard>
 
-							<CopyToClipboard text={stream.streamKey} onCopy={() => toast.success('Key Copied!')}>
-								<TextInput readOnly value={stream.streamKey} label="Stream key" />
-							</CopyToClipboard>
+						<CopyToClipboard text={stream.streamKey} onCopy={() => toast.success('Key Copied!')}>
+							<TextInput readOnly value={stream.streamKey} label="Stream key" />
+						</CopyToClipboard>
 
-							<p className="text-sm text-gray-500"> Please paste this key and start stream in OBS.</p>
-						</>
-					) : null}
-				</>
+						<p className="text-sm text-gray-500"> Please paste this key and start stream in OBS.</p>
+					</section>
+				) : null}
 			</>
 
 			{!isLive ? (
 				<>
-					<h5 className="text-gray-900 font-normal mt-5">Choose Modules & start streaming</h5>
+					<h5 className="text-gray-100 font-normal mt-5">Choose Modules & start streaming</h5>
 
 					<div className="grid md:grid-cols-3 gap-5 mt-5 mb-5">
-						<ModulesAction
-							active={active}
-							setActive={setActive}
-							icon="https://www.beyondclub.xyz/assets/images/logo.svg"
-							bg_color={'#F1FBFF'}
-							title="Live Stream"
-							description="Create a live stream"
-						/>
-						<ModulesAction
-							active={active}
-							icon="https://www.beyondclub.xyz/assets/images/logo.svg"
-							bg_color={'#F7F4FF'}
-							setActive={setActive}
-							title="Token Gated"
-							description="Token gated content"
-						/>
+						{ModulesList.map((item) => (
+							<ModulesAction
+								active={active}
+								setActive={setActive}
+								icon={item.icon}
+								bg_color={item.bg_color}
+								title={item.name}
+								description={item.description}
+							/>
+						))}
 					</div>
 
 					{active.length !== 0 ? (
@@ -192,7 +243,10 @@ const Modules = () => {
 
 							<div className="space-y-1">
 								{active.map((item) => (
-									<p className="border px-2 py-1 text-gray-500 rounded-lg text-sx" key={item}>
+									<p
+										className="border px-2 py-1 border-gray-700 text-gray-200 rounded-lg text-sx"
+										key={item}
+									>
 										{item}
 									</p>
 								))}
@@ -204,7 +258,7 @@ const Modules = () => {
 
 			{!stream && (
 				<Button
-					className="my-5"
+					className="my-5 white_button"
 					color="dark"
 					onClick={() => {
 						createStream?.();

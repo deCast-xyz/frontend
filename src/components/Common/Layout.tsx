@@ -56,7 +56,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 			</main>
 
 			<footer>
-				<p className="text-center text-sm text-gray-500 bg-[#010314] py-5">Copyright Decast</p>
+				<p className="text-center text-sm text-gray-500 bg-[#010314] py-5">Copyright © 2023 DeCast</p>
 			</footer>
 		</section>
 	);

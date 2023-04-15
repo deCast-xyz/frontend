@@ -49,16 +49,17 @@ const WatchAddress = () => {
 	}, [router]);
 	console.log(streamId);
 	console.log(playbackId, 'playbackId');
-	
 
 	return (
 		<div>
-			<iframe
-				src={`https://lvpr.tv?v=${playbackId}`}
-				frameBorder="0"
-				allow="autoplay; encrypted-media; picture-in-picture"
-				sandbox="allow-scripts"
-			></iframe>
+			<div className="grid place-items-center">
+				<iframe
+					src={`https://lvpr.tv?v=${playbackId}`}
+					frameBorder="0"
+					allow="autoplay; encrypted-media; picture-in-picture"
+					sandbox="allow-scripts"
+				></iframe>
+			</div>
 		</div>
 	);
 };

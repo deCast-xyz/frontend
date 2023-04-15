@@ -50,8 +50,8 @@ const Register = () => {
 	};
 
 	return (
-		<div className=" bg-white p-5 rounded-lg md:3/4">
-			<h5 className="text-xl  my-5 text-gray-900 font-medium">
+		<div className="  p-5 rounded-lg md:3/4">
+			<h5 className="text-xl  my-5 text-white font-bold">
 				{active === 0 ? 'Become a Creator' : 'Membership Detail'}
 			</h5>
 			<div className="grid md:grid-cols-2 gap-5 items-center">
@@ -86,7 +86,9 @@ const Register = () => {
 									<div className="flex justify-between items-center">
 										<div></div>
 										<Button
-											color="dark"
+											color="white"
+											type="button"
+											className="white_button"
 											onClick={() => {
 												nextStep();
 											}}
@@ -118,10 +120,11 @@ const Register = () => {
 										placeholder=""
 										{...form.getInputProps('monthly_price')}
 									/>
-									<div className="flex items-center justify-between">
+									<div className="flex items-center justify-between pt-6">
 										<Button
 											color="dark"
 											variant="link"
+											className="text-white"
 											onClick={() => {
 												prevStep();
 											}}
@@ -129,7 +132,7 @@ const Register = () => {
 											Previous
 										</Button>
 
-										<Button type="submit" color="dark" loading={loading}>
+										<Button color="white" className="white_button" type="submit" loading={loading}>
 											Submit
 										</Button>
 									</div>

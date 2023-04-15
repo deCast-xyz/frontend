@@ -25,10 +25,13 @@ const Subscribe = () => {
 			<Modal opened={opened} onClose={close} title="Subscribe">
 				<div>
 					<p>Subscribe to this stream to watch it live</p>
-					<p>Cost: 22.5 DAI Streemed</p>
-					<p>Cost: $20</p>
+					<div className="flex items-center justify-between my-5">
+						<span>Cost</span> <div>22.5 DAI Streemed</div>
+					</div>
 
-					<div className="bg-gray-50">This subscription is streamed to the creator using superfluid.</div>
+					<div className="bg-[#13161B] p-2 rounded-lg mb-2">
+						This subscription is streamed to the creator using superfluid.
+					</div>
 
 					<Button
 						onClick={async () => {
@@ -44,7 +47,7 @@ const Subscribe = () => {
 								await provider.getSigner()
 							);
 						}}
-						color="red"
+						color="green"
 						radius={'lg'}
 						fullWidth
 						className="mt-2"

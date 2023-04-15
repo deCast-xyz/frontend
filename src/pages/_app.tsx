@@ -43,7 +43,12 @@ const myCache = createEmotionCache({ key: 'mantine' });
 
 export default function App({ Component, pageProps }: AppProps) {
 	return (
-		<MantineProvider theme={{ fontFamily: 'Open Sans' }} withGlobalStyles withNormalizeCSS emotionCache={myCache}>
+		<MantineProvider
+			theme={{ fontFamily: 'Open Sans', colorScheme: 'dark' }}
+			withGlobalStyles
+			withNormalizeCSS
+			emotionCache={myCache}
+		>
 			<div className="bg-gray-50">
 				<WagmiConfig client={wagmiClient}>
 					<RainbowKitProvider chains={chains} modalSize="compact">
