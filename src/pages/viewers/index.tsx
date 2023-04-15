@@ -73,12 +73,12 @@ const ViewerCard = ({ creator, hideSubscribe = false }: { creator: creators; hid
 			<div className="border-gray-900">
 				<article className="overflow-hidden rounded-lg shadow-lg">
 					<a href="#">
-						<img alt="Placeholder" className="block h-auto w-full" src={creator.image ?? ''} />
+						<img alt="" className="block h-auto w-full" src={creator.image ?? ''} />
 					</a>
 					<div className="bg-gray-900  p-2 md:p-4">
 						<footer className="flex  items-center justify-between leading-none mb-5">
 							<a className="flex items-center no-underline hover:underline " href="#">
-								<img alt="Placeholder" className="block rounded-full" src={creator.avatar ?? ''} />
+								<img alt="" className="block rounded-full" src={creator.avatar ?? ''} />
 								<div className="text-lg ml-5">
 									<a className="no-underline hover:underline " href="#">
 										{creator.membership_name}
