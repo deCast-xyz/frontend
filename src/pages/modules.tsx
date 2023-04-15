@@ -1,3 +1,4 @@
+import ImageUpload from '@/components/Common/ImageUpload';
 import { useCreateStream } from '@livepeer/react';
 import { Client } from '@livepeer/webrtmp-sdk';
 import { Button, TextInput } from '@mantine/core';
@@ -5,6 +6,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { toast } from 'react-hot-toast';
+import { useAccount } from 'wagmi';
 
 const ModulesAction = ({
 	title,
@@ -48,6 +50,7 @@ const ModulesAction = ({
 
 const Modules = () => {
 	const router = useRouter();
+	const { address } = useAccount();
 	const [active, setActive] = useState<string[]>([]);
 
 	const [streamName, setStreamName] = useState<string>('');
@@ -66,6 +69,7 @@ const Modules = () => {
 			console.log(stream);
 			if (stream) {
 				console.log(stream);
+
 				if (video.current) {
 					video.current.volume = 0;
 
@@ -82,9 +86,20 @@ const Modules = () => {
 		})();
 	}, [stream]);
 
-	const goLive = () => {
+	const goLive = async () => {
 		const streamKey = stream?.streamKey;
-		console.log('asd');
+
+		const response = await fetch('/api/account/live_stream', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				stream_id: stream?.playbackId,
+				wallet_address: address,
+			}),
+		});
+
 		if (!streamRef.current) {
 			alert('Video stream was not started.');
 		}
@@ -118,7 +133,12 @@ const Modules = () => {
 			<h4 className="text-xl text-gray-900 font-medium mb-5">{isLive ? 'LIVE' : 'New'} Stream</h4>
 
 			{!isLive ? (
-				<TextInput type="text" label="Stream name" onChange={(e) => setStreamName(e.target.value)} />
+				<div className="space-y-5">
+					<TextInput type="text" label="Stream name" onChange={(e) => setStreamName(e.target.value)} />
+					<div className="grid grid-cols-5 gap-5">
+						<ImageUpload label="Profile Image" isDetailsHidden />
+					</div>
+				</div>
 			) : null}
 
 			<>

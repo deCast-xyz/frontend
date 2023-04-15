@@ -1,3 +1,4 @@
+import { db } from '@/util/db';
 import { ThirdwebSDK } from '@thirdweb-dev/sdk';
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -41,8 +42,19 @@ async function minting({
 
 
 export default async function Handler(req: NextApiRequest, res: NextApiResponse) {
-    const { membership_name: name, membership_description: description, symbol, image, wallet_address } = req.body
+    const { membership_name: name, membership_description: description, symbol, image, monthly_price, username, wallet_address, creator_name } = req.body
 
+
+    await db.creators.create({
+        data: {
+            creator_name,
+            username,
+            wallet_address,
+            membership_name: name,
+            membership_description: description,
+            membership_price: monthly_price ? String(monthly_price) : null,
+        }
+    });
 
     const hash = await minting({ wallet_address, name, description, symbol, image });
 

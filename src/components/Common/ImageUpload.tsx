@@ -16,15 +16,18 @@ const ImageUpload = (props: any) => {
 			type: file?.type,
 		});
 		setSelectedFile(newFile);
-		const objectUrl = await URL.createObjectURL(selectedFile);
-		setPreview(objectUrl);
+		if (selectedFile) {
+			const objectUrl = await URL.createObjectURL(selectedFile);
+			console.log(objectUrl);
+			setPreview(objectUrl);
+		}
 	};
 
 	return (
 		<>
 			{preview ? (
 				<div>
-					<img src={`${preview}`} />
+					<img src={`${preview}`} className="rounded-md mb-2" />
 
 					<Button
 						compact

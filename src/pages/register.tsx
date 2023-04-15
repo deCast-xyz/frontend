@@ -50,8 +50,10 @@ const Register = () => {
 	};
 
 	return (
-		<div className=" bg-white p-5 rounded-lg">
-			<h5 className="text-xl  my-5 text-gray-900 font-medium">Become a creator</h5>
+		<div className=" bg-white p-5 rounded-lg md:3/4">
+			<h5 className="text-xl  my-5 text-gray-900 font-medium">
+				{active === 0 ? 'Become a Creator' : 'Membership Detail'}
+			</h5>
 			<div className="grid md:grid-cols-2 gap-5 items-center">
 				<div>
 					<Stepper
@@ -62,7 +64,7 @@ const Register = () => {
 						allowNextStepsSelect={false}
 					>
 						<Stepper.Step label="Creator Detail">
-							<div className="md:w-3/4 ">
+							<div>
 								<form className="space-y-5">
 									<TextInput
 										required
@@ -81,15 +83,17 @@ const Register = () => {
 
 									<ImageUpload label="Profile Image" />
 
-									<Button
-										color="dark"
-										type="submit"
-										onClick={() => {
-											nextStep();
-										}}
-									>
-										Submit
-									</Button>
+									<div className="flex justify-between items-center">
+										<div></div>
+										<Button
+											color="dark"
+											onClick={() => {
+												nextStep();
+											}}
+										>
+											Next
+										</Button>
+									</div>
 								</form>
 							</div>
 						</Stepper.Step>
@@ -114,10 +118,21 @@ const Register = () => {
 										placeholder=""
 										{...form.getInputProps('monthly_price')}
 									/>
+									<div className="flex items-center justify-between">
+										<Button
+											color="dark"
+											variant="link"
+											onClick={() => {
+												prevStep();
+											}}
+										>
+											Previous
+										</Button>
 
-									<Button type="submit" color="dark" loading={loading}>
-										Submit
-									</Button>
+										<Button type="submit" color="dark" loading={loading}>
+											Submit
+										</Button>
+									</div>
 								</form>
 							</div>
 						</Stepper.Step>

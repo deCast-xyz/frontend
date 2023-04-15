@@ -1,3 +1,4 @@
+import ImageUpload from '@/components/Common/ImageUpload';
 import { useCreateStream } from '@livepeer/react';
 import { Client } from '@livepeer/webrtmp-sdk';
 import { Button, TextInput } from '@mantine/core';
@@ -79,7 +80,11 @@ const NewStream = () => {
 			<h4 className="text-xl text-gray-900 font-medium">{isLive ? 'LIVE' : 'New'} Stream</h4>
 
 			{!isLive ? (
-				<TextInput type="text" label="Stream name" onChange={(e) => setStreamName(e.target.value)} />
+				<>
+					<TextInput type="text" label="Stream name" onChange={(e) => setStreamName(e.target.value)} />
+
+					<ImageUpload label="Profile Image" />
+				</>
 			) : null}
 
 			<>

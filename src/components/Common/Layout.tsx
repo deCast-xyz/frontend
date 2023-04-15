@@ -41,11 +41,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 				</Link>
 
 				<div className="flex items-center space-x-8">
-					<Link href="/register" passHref>
-						<Button color="gray" radius={'lg'} className="bg-white">
-							Are you creator?
-						</Button>
-					</Link>
+					{address ? (
+						<Link href="/register" passHref>
+							<Button color="gray" radius={'lg'} className="bg-white">
+								Are you creator?
+							</Button>
+						</Link>
+					) : null}
 
 					<div className="connect">
 						<ConnectButton />
