@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAccount } from 'wagmi';
 
+import { Button } from '@mantine/core';
 import * as PushAPI from '@pushprotocol/restapi';
 import { ENV } from '@pushprotocol/restapi/src/lib/constants';
 import { useWeb3React } from '@web3-react/core';
@@ -71,13 +72,14 @@ const GroupChat = () => {
 
 	return (
 		<>
-			<button
+			<Button
+				className="white_button"
 				onClick={() => {
 					groupChat();
 				}}
 			>
 				Join Chat
-			</button>
+			</Button>
 		</>
 	);
 };

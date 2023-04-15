@@ -17,4 +17,6 @@ model creators {
   membership_price       String?
   stream_id              String?
   playback_id            String?
+  image                  String?
+  avatar                 String?
 }

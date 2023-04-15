@@ -1,3 +1,4 @@
+import GroupChat from '@/components/Viewers/GroupChat';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
@@ -52,13 +53,18 @@ const WatchAddress = () => {
 
 	return (
 		<div>
-			<div className="grid place-items-center">
+			<div className="grid grid-cols-12 place-items-center">
 				<iframe
+					className="col-span-10"
 					src={`https://lvpr.tv?v=${playbackId}`}
 					frameBorder="0"
 					allow="autoplay; encrypted-media; picture-in-picture"
 					sandbox="allow-scripts"
 				></iframe>
+
+				<div className="col-span-2">
+					<GroupChat />
+				</div>
 			</div>
 		</div>
 	);
