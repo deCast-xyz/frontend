@@ -4,10 +4,34 @@
 // ternanryOperator
 // button - ternanry-
 // ternanry for function as well
-
-import { Button } from '@mantine/core';
-
+import { Button, Modal } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 // wag
+
+const Subscribe = () => {
+	const [opened, { open, close }] = useDisclosure(false);
+	return (
+		<>
+			<Modal opened={opened} onClose={close} title="Subscribe">
+				<div>
+					<p>Subscribe to this stream to watch it live</p>
+					<p>Cost: 22.5 DAI Streemed</p>
+					<p>Cost: $20</p>
+
+					<div className="bg-gray-50">This subscription is streamed to the creator using superfluid.</div>
+
+					<Button onClick={close} color="red" radius={'lg'} fullWidth className="mt-2">
+						Subscribe
+					</Button>
+				</div>
+			</Modal>
+
+			<Button onClick={open} color="red" radius={'lg'} fullWidth className="mt-2">
+				Subscribe
+			</Button>
+		</>
+	);
+};
 
 const ViewerCard = ({ hideSubscribe = false }: { hideSubscribe?: boolean }) => {
 	return (
@@ -39,9 +63,7 @@ const ViewerCard = ({ hideSubscribe = false }: { hideSubscribe?: boolean }) => {
 						</footer>
 
 						{!hideSubscribe ? (
-							<Button color="red" radius={'lg'} fullWidth className="mt-2">
-								Subscribe
-							</Button>
+							<Subscribe />
 						) : (
 							<Button color="blue" radius={'lg'} fullWidth>
 								Watch
