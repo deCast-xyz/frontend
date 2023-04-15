@@ -144,26 +144,21 @@ const Modules = () => {
 			) : null}
 
 			<>
-				{!isLive ? (
-					<>
-						{stream ? (
-							<>
-								<CopyToClipboard
-									text={stream.rtmpIngestUrl}
-									onCopy={() => toast.success('Server Copied!')}
-								>
-									<TextInput readOnly value={stream.rtmpIngestUrl} label="Server" />
-								</CopyToClipboard>
+				<>
+					{stream ? (
+						<>
+							<CopyToClipboard text={stream.rtmpIngestUrl} onCopy={() => toast.success('Server Copied!')}>
+								<TextInput readOnly value={stream.rtmpIngestUrl} label="Server" />
+							</CopyToClipboard>
 
-								<CopyToClipboard text={stream.streamKey} onCopy={() => toast.success('Key Copied!')}>
-									<TextInput readOnly value={stream.streamKey} label="Stream key" />
-								</CopyToClipboard>
+							<CopyToClipboard text={stream.streamKey} onCopy={() => toast.success('Key Copied!')}>
+								<TextInput readOnly value={stream.streamKey} label="Stream key" />
+							</CopyToClipboard>
 
-								<p className="text-sm text-gray-500"> Please paste this key and start stream in OBS.</p>
-							</>
-						) : null}
-					</>
-				) : null}
+							<p className="text-sm text-gray-500"> Please paste this key and start stream in OBS.</p>
+						</>
+					) : null}
+				</>
 			</>
 
 			{!isLive ? (
