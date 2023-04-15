@@ -12,33 +12,19 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 	useEffect(() => {
 		const init = async () => {
 			if (address) {
-				// Specify the address of the NFT contract and the user's address
-				const nftContractAddress = '0x5fCB84F95E7ee10FE552B3803DF418b39FE2cA6E'; // replace with the actual address
-
-				// Specify the ABI of the NFT contract
+				const nftContractAddress = '0x5fCB84F95E7ee10FE552B3803DF418b39FE2cA6E';
 				const nftContractAbi = UniversalAbi;
 
-				// Create an instance of the NFT contract using the Contract object provided by Ethers
-				const provider = new ethers.providers.InfuraProvider();
+				const provider = new ethers.providers.AlchemyProvider('maticmum', process.env.NEXT_PUBLIC_ALCHEMY_ID!);
 				const nftContract = new ethers.Contract(nftContractAddress, nftContractAbi, provider);
 
-				// Call the balanceOf function to check how many NFTs the user is holding
-				const tokenId = '0x....'; // replace with the actual token ID
 				const balance = await nftContract.balanceOf(address);
 
-				console.log(address);
-				console.log('balance');
-				console.log(balance);
-
-				// if (balance == 0) {
-				// 	router.push('/register');
-				// } else {
-				// 	router.push('/new_stream');
-				// }
-
-				// check whether the user has a nft
-				// if user has no nft, redirect to /register
-				// or just redirect to new_stream
+				if (balance.toString() == 0) {
+					router.push('/register');
+				} else {
+					router.push('/new_stream');
+				}
 			}
 		};
 
