@@ -33,9 +33,14 @@ body {
       width: 200px;
       height: 499px;
       left: 0px;
-      top: 300px;
+      bottom: 0px;
       background: linear-gradient(245.7deg, #e42212 22.92%, #921005 45.94%, #921005 85.03%);
       opacity: .5;
       filter: blur(150px);
       transform: rotate(-28.94deg);
+}
+
+.connect button{
+  background: #fff !important;
+  color: #000 !important
 }

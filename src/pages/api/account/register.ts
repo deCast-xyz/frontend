@@ -41,7 +41,7 @@ async function minting({
 
 
 export default async function Handler(req: NextApiRequest, res: NextApiResponse) {
-    const { name, description, symbol, image, wallet_address } = req.body
+    const { membership_name: name, membership_description: description, symbol, image, wallet_address } = req.body
 
 
     const hash = await minting({ wallet_address, name, description, symbol, image });

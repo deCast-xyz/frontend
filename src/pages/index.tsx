@@ -1,17 +1,20 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { Inter } from 'next/font/google';
+import { useAccount } from 'wagmi';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
+	const { address } = useAccount();
+
 	return (
 		<main className="flex flex-col items-center justify-between">
 			<div className="grid grid-cols-2 gap-5 place-items-center">
 				<div className="space-y-10">
-					<h4 className="text-5xl font-bold mb-5">Open-sourced Live Streaming</h4>
+					<h4 className="text-5xl font-bold mb-5">Open-source Live Streaming</h4>
 					<p>Customize and add whatever modules you want</p>
 
-					<ConnectButton />
+					<div className="connect">{!address ? <ConnectButton /> : null}</div>
 				</div>
 
 				<div>

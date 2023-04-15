@@ -7,7 +7,6 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { toast } from 'react-hot-toast';
 
 const ModulesAction = ({
-	id,
 	title,
 	icon,
 	description,
@@ -15,7 +14,6 @@ const ModulesAction = ({
 	setActive,
 	active,
 }: {
-	id: string;
 	title: string;
 	icon?: string;
 	bg_color: string;
@@ -25,26 +23,25 @@ const ModulesAction = ({
 }) => {
 	return (
 		<div
-			className={`cursor-pointer text-gray-900  rounded-lg p-5	border-gray-600
+			className={`cursor-pointer text-gray-900 border rounded-lg p-5	border-gray-100
 			`}
 			style={{
-				borderColor: active.includes(id) ? '#2a2b3a' : 'rgb(59 130 246)',
 				backgroundColor: bg_color,
 			}}
 			onClick={() => {
-				if (active.includes(id)) {
-					setActive(active.filter((item) => item !== id));
+				if (active.includes(title)) {
+					setActive(active.filter((item) => item !== title));
 				} else {
-					setActive([...active, id]);
+					setActive([...active, title]);
 				}
 			}}
 		>
-			<h4 className="text-xl flex items-center">
-				<img src={icon} />
+			<h6 className="text-l flex items-center">
+				<img src={icon} className="w-4 h-4 mr-2" />
 				{title}
-			</h4>
+			</h6>
 
-			<p className="text-gray-500 text-sm mt-5">{description}</p>
+			<p className="text-gray-500 text-sm mt-2">{description}</p>
 		</div>
 	);
 };
@@ -118,6 +115,8 @@ const Modules = () => {
 
 	return (
 		<section className="bg-white p-5 rounded-lg">
+			<h4 className="text-xl text-gray-900 font-medium mb-5">{isLive ? 'LIVE' : 'New'} Stream</h4>
+
 			{!isLive ? (
 				<TextInput type="text" label="Stream name" onChange={(e) => setStreamName(e.target.value)} />
 			) : null}
@@ -147,33 +146,47 @@ const Modules = () => {
 
 			{!isLive ? (
 				<>
-					<h5 className="text-gray-900">Choose Modules & start streaming</h5>
+					<h5 className="text-gray-900 font-normal mt-5">Choose Modules & start streaming</h5>
 
 					<div className="grid md:grid-cols-3 gap-5 mt-5 mb-5">
 						<ModulesAction
 							active={active}
 							setActive={setActive}
-							id="1"
+							icon="https://www.beyondclub.xyz/assets/images/logo.svg"
 							bg_color={'#F1FBFF'}
 							title="Live Stream"
-							icon=""
 							description="Create a live stream"
 						/>
 						<ModulesAction
 							active={active}
-							icon=""
+							icon="https://www.beyondclub.xyz/assets/images/logo.svg"
 							bg_color={'#F7F4FF'}
 							setActive={setActive}
-							id="2"
 							title="Token Gated"
 							description="Token gated content"
 						/>
 					</div>
+
+					{active.length !== 0 ? (
+						<>
+							<h5 className="text-gray-500 mb-3">Selected Modules</h5>
+
+							<div className="space-y-1">
+								{active.map((item) => (
+									<p className="border px-2 py-1 text-gray-500 rounded-lg text-sx" key={item}>
+										{item}
+									</p>
+								))}
+							</div>
+						</>
+					) : null}
 				</>
 			) : null}
 
 			{!stream && (
 				<Button
+					className="my-5"
+					color="dark"
 					onClick={() => {
 						createStream?.();
 					}}
@@ -183,7 +196,7 @@ const Modules = () => {
 				</Button>
 			)}
 
-			<div className="bg-gray-50">
+			<div>
 				<video className="mt-0 rounded-md" ref={video} />
 			</div>
 		</section>

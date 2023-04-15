@@ -1,4 +1,5 @@
 import UniversalAbi from '@/constants/abi/UniversalABI';
+import { Button } from '@mantine/core';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { ethers } from 'ethers';
 import Link from 'next/link';
@@ -9,9 +10,10 @@ import { useAccount } from 'wagmi';
 const Layout = ({ children }: { children: React.ReactNode }) => {
 	const router = useRouter();
 	const { address, isConnecting, isDisconnected } = useAccount();
+
 	useEffect(() => {
 		const init = async () => {
-			if (address && router.asPath === '/') {
+			if (address && (router.asPath == '/' || router.asPath == '/register')) {
 				const nftContractAddress = '0x5fCB84F95E7ee10FE552B3803DF418b39FE2cA6E';
 				const nftContractAbi = UniversalAbi;
 
@@ -39,9 +41,16 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 				</Link>
 
 				<div className="flex items-center space-x-8">
-					<>
+					{router.asPath.includes('viewer') ? (
+						<Link href="/register" passHref>
+							<Button color="gray" radius={'lg'} className="bg-white">
+								Are you creator?
+							</Button>
+						</Link>
+					) : null}
+					<div className="connect">
 						<ConnectButton />
-					</>
+					</div>
 				</div>
 			</header>
 			<main className="mx-auto container px-1 sm:px-6 md:px-10 relative xl:py-20 2xl:py-28 min-h-screen bg-[#010314] text-white">
