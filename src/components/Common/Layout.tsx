@@ -1,37 +1,34 @@
-import UniversalAbi from '@/constants/abi/UniversalABI';
 import { Button } from '@mantine/core';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { ethers } from 'ethers';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 import { useAccount } from 'wagmi';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
 	const router = useRouter();
 	const { address, isConnecting, isDisconnected } = useAccount();
 
-	useEffect(() => {
-		const init = async () => {
-			if (address && (router.asPath == '/' || router.asPath == '/register')) {
-				const nftContractAddress = '0x5fCB84F95E7ee10FE552B3803DF418b39FE2cA6E';
-				const nftContractAbi = UniversalAbi;
+	// useEffect(() => {
+	// 	const init = async () => {
+	// 		if (address && (router.asPath == '/' || router.asPath == '/register')) {
+	// 			const nftContractAddress = '0x5fCB84F95E7ee10FE552B3803DF418b39FE2cA6E';
+	// 			const nftContractAbi = UniversalAbi;
 
-				const provider = new ethers.providers.AlchemyProvider('maticmum', process.env.NEXT_PUBLIC_ALCHEMY_ID!);
-				const nftContract = new ethers.Contract(nftContractAddress, nftContractAbi, provider);
+	// 			const provider = new ethers.providers.AlchemyProvider('maticmum', process.env.NEXT_PUBLIC_ALCHEMY_ID!);
+	// 			const nftContract = new ethers.Contract(nftContractAddress, nftContractAbi, provider);
 
-				const balance = await nftContract.balanceOf(address);
+	// 			const balance = await nftContract.balanceOf(address);
 
-				if (balance.toString() == 0) {
-					router.push('/register');
-				} else {
-					router.push('/viewers');
-				}
-			}
-		};
+	// 			if (balance.toString() == 0) {
+	// 				router.push('/register');
+	// 			} else {
+	// 				router.push('/viewers');
+	// 			}
+	// 		}
+	// 	};
 
-		init();
-	}, [address]);
+	// 	init();
+	// }, [address]);
 
 	return (
 		<section className="bg-[#010314]">

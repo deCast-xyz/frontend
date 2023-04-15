@@ -128,6 +128,8 @@ const Modules = () => {
 		});
 	};
 
+	console.log(stream);
+
 	return (
 		<section className="bg-white p-5 rounded-lg">
 			<h4 className="text-xl text-gray-900 font-medium mb-5">{isLive ? 'LIVE' : 'New'} Stream</h4>

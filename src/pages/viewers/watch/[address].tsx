@@ -6,17 +6,29 @@ const WatchAddress = () => {
 	const [streamId, setStreamId] = useState<string>('');
 	const router = useRouter();
 
-	useEffect(() => {}, []);
+	useEffect(() => {
+		const fetchStreamId = async () => {
+			const response = await fetch('/api/account/get_stream', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					wallet_address: router.query.address,
+				}),
+			});
+
+			const data = await response.json();
+
+			if (data.stream_id) setStreamId(data.stream_id);
+		};
+
+		fetchStreamId();
+	}, []);
 
 	return (
 		<div>
-			<Player
-				title="Agent 327: Operation Barbershop"
-				playbackId="f5eese9wwl88k4g8"
-				showPipButton
-				objectFit="cover"
-				priority
-			/>
+			<Player showPipButton playbackId={streamId as string} />
 		</div>
 	);
 };
