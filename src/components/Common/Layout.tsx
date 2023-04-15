@@ -11,7 +11,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 	const { address, isConnecting, isDisconnected } = useAccount();
 	useEffect(() => {
 		const init = async () => {
-			if (address) {
+			if (address && router.asPath === '/') {
 				const nftContractAddress = '0x5fCB84F95E7ee10FE552B3803DF418b39FE2cA6E';
 				const nftContractAbi = UniversalAbi;
 
@@ -23,7 +23,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 				if (balance.toString() == 0) {
 					router.push('/register');
 				} else {
-					router.push('/new_stream');
+					router.push('/modules');
 				}
 			}
 		};
@@ -34,12 +34,21 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<>
 			<header className="flex justify-between p-5">
-				<div>
-					<Link href="/" passHref>
-						deCast
-					</Link>
+				<Link href="/" passHref>
+					deCast
+				</Link>
+
+				<div className="flex items-center space-x-8">
+					<>
+						{address && (
+							<Link passHref href={'/modules'}>
+								Modules
+							</Link>
+						)}
+
+						<ConnectButton />
+					</>
 				</div>
-				<ConnectButton />
 			</header>
 			<main className="mx-auto container px-1 sm:px-6 md:px-10 relative xl:py-20 2xl:py-28 min-h-screen">
 				{children}

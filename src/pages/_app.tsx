@@ -1,4 +1,3 @@
-import Layout from '@/components/Common/Layout';
 import '@/styles/globals.css';
 import { MantineProvider, createEmotionCache } from '@mantine/core';
 import '@rainbow-me/rainbowkit/styles.css';
@@ -13,6 +12,9 @@ import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
 import { LivepeerConfig, createReactClient, studioProvider } from '@livepeer/react';
+import dynamic from 'next/dynamic';
+
+const Layout = dynamic(() => import('@/components/Common/Layout'), { ssr: false });
 
 const livepeerClient = createReactClient({
 	provider: studioProvider({
