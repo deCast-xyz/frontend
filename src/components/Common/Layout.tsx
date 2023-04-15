@@ -48,6 +48,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 							</Button>
 						</Link>
 					) : null}
+
+					<Link href="/group_chat" passHref>
+						<Button color="gray" radius={'lg'} className="bg-white">
+							group chat
+						</Button>
+					</Link>
 					<div className="connect">
 						<ConnectButton />
 					</div>
