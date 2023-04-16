@@ -146,6 +146,7 @@ const Modules = () => {
 	}, [stream]);
 
 	const goLive = async () => {
+		console.log(stream);
 		const streamKey = stream?.streamKey;
 		const playbackId = stream?.playbackId;
 
