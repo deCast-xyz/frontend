@@ -8,7 +8,7 @@ export default async function Handler(req: NextApiRequest, res: NextApiResponse)
 
     await db.creators.updateMany({
         where: {
-            wallet_address: wallet_address
+            wallet_address: wallet_address.toLocaleLowerCase()
         },
         data: {
             stream_id: stream_id,

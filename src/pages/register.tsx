@@ -34,7 +34,7 @@ const Register = () => {
 			},
 			body: JSON.stringify({
 				...form.values,
-				wallet_address: address,
+				wallet_address: address?.toLocaleLowerCase(),
 			}),
 		});
 
